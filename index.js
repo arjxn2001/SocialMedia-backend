@@ -17,7 +17,7 @@ app.use(express.json())
 
 const allowedOrigins = [
   "http://localhost:5173", 
-  "https://your-vercel-frontend.vercel.app" 
+  "https://socialmedia-frontend-five.vercel.app"
 ];
 
 app.use(cors({
