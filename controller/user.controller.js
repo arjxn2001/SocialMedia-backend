@@ -27,7 +27,7 @@ export const registerUser = async (req,res)=>{
     // cookies
     const token = jwt.sign({userId: user._id}, process.env.JWT_SECRET)
 
-    res.cookie("token", token, {
+    res.cookie("access_token", token, {
         httpOnly:true,
         secure:process.env.NODE_ENV === "production",
         maxAge: 30 * 24* 60 * 60 * 100,
@@ -66,7 +66,7 @@ export const loginUser = async (req,res)=>{
     // cookies
     const token = jwt.sign({userId: user._id}, process.env.JWT_SECRET)
 
-    res.cookie("token", token, {
+    res.cookie("access_token", token, {
         httpOnly:true,
         secure:process.env.NODE_ENV === "production",
         maxAge: 30 * 24* 60 * 60 * 100,

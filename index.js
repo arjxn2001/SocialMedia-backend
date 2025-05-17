@@ -15,21 +15,22 @@ const app = express();
 
 app.use(express.json())
 
-const allowedOrigins = [
-  "http://localhost:5173", 
-  "https://socialmedia-frontend-five.vercel.app"
-];
-
 app.use(cors({
   origin: function (origin, callback) {
+    const allowedOrigins = [
+      "http://localhost:5173", 
+      "http://localhost:5174", 
+      "https://socialmedia-frontend-five.vercel.app"
+    ];
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
       callback(new Error("Not allowed by CORS"));
     }
   },
-  credentials: true,
-}));    
+  credentials: true, // ✅ required to send cookies
+}));
+
 
 app.use(cookieParser());
 app.use(fileUpload());
