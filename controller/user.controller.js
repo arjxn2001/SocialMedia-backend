@@ -25,7 +25,7 @@ export const registerUser = async (req,res)=>{
     });
 
     // cookies
-    const token = jwt.sign({userId: user._id}, process.env.JWT_SECRET)
+    const token = jwt.sign({userId: user._id}, "arjun12345")
 
     res.cookie("access_token", token, {
         httpOnly:true,
@@ -64,7 +64,7 @@ export const loginUser = async (req,res)=>{
 
 
     // cookies
-    const token = jwt.sign({userId: user._id}, process.env.JWT_SECRET)
+    const token = jwt.sign({userId: user._id}, "arjun12345")
 
     res.cookie("access_token", token, {
         httpOnly:true,
@@ -114,7 +114,7 @@ export const getUser = async (req, res) => {
         });
       }
   
-      jwt.verify(token, process.env.JWT_SECRET, async (err, payload) => {
+      jwt.verify(token, "arjun12345", async (err, payload) => {
         if (err) {
           return res.status(200).json({
             ...detailsWithoutPassword,

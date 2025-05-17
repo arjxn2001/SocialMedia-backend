@@ -5,7 +5,7 @@ export const verifyToken = (req, res, next) => {
 
     if (!token) return res.status(401).json({ message: "Not Authenticated!" });
 
-    jwt.verify(token, process.env.JWT_SECRET, (err, payload) => {
+    jwt.verify(token, "arjun12345", (err, payload) => {
         if (err) {
             return res.status(403).json({ message: "Token is invalid!" });
         }

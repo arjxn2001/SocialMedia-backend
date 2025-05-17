@@ -96,9 +96,9 @@ export const createPin = async (req, res) => {
   height = metadata.width / clientAspectRatio;
 
   const imagekit = new Imagekit({
-    publicKey: process.env.IK_PUBLIC_KEY,
-    privateKey: process.env.IK_PRIVATE_KEY,
-    urlEndpoint: process.env.IK_URL_ENDPOINT,
+    publicKey: "public_5YFUyGPjZV80vy1c9vO2oXpXE5w=",
+    privateKey: "private_FDqzgoKC13SDsjJOrUM2p9s7a30=",
+    urlEndpoint: "https://ik.imagekit.io/tmxmqnd6a",
   });
 
   const textLeftPosition = Math.round((parsedTextOptions.left * width) / 375);
@@ -186,7 +186,7 @@ export const interactionCheck = async (req, res) => {
     return res.status(200).json({ likeCount, isLiked: false, isSaved: false });
   }
 
-  jwt.verify(token, process.env.JWT_SECRET, async (err, payload) => {
+  jwt.verify(token, "arjun12345", async (err, payload) => {
     if (err) {
       return res
         .status(200)
