@@ -33,8 +33,9 @@ const pinSchema = new Schema({
         type:[String],
     },
     user: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "User",
+        required:true,
     },
 
 

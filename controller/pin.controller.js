@@ -178,7 +178,7 @@ export const createPin = async (req, res) => {
 
 export const interactionCheck = async (req, res) => {
   const { id } = req.params;
-  const token = req.cookies.token;
+  const token = req.cookies.access_token;
 
   const likeCount = await Like.countDocuments({ pin: id });
 

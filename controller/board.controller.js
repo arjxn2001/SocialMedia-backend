@@ -9,7 +9,11 @@ export const getUserBoards = async (req, res) => {
   const boardsWithPinDetails = await Promise.all(
     boards.map(async (board) => {
       const pinCount = await Pin.countDocuments({ board: board._id });
-      const firstPin = await Pin.findOne({ board: board._id });
+
+      const firstPin = await Pin.findOne({ 
+        board: board._id, 
+        media: { $exists: true, $ne: "" } // ensures it has media 
+      }).sort({ createdAt: -1 }); // latest pin
 
       return {
         ...board.toObject(),

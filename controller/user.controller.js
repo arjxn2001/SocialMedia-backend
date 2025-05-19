@@ -103,7 +103,7 @@ export const getUser = async (req, res) => {
       const followerCount = await Follow.countDocuments({ following: user._id });
       const followingCount = await Follow.countDocuments({ follower: user._id });
   
-      const token = req.cookies.token;
+      const token = req.cookies.access_token;
   
       if (!token) {
         return res.status(200).json({
