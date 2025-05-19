@@ -20,7 +20,7 @@ app.use(cors({
     const allowedOrigins = [
       "http://localhost:5173", 
       "http://localhost:5174", 
-      "https://socialmedia-frontend-five.vercel.app"
+      "https://socialmedia-frontend-five.vercel.app/"
     ];
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
