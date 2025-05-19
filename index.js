@@ -16,20 +16,22 @@ const app = express();
 app.use(express.json())
 
 app.use(cors({
-  origin: function (origin, callback) {
+  origin: (origin, callback) => {
     const allowedOrigins = [
-      "http://localhost:5173", 
-      "http://localhost:5174", 
-      "https://socialmedia-frontend-mocha.vercel.app"
+      "http://localhost:5173",
+      "http://localhost:5174",
+      "https://socialmedia-frontend-mocha.vercel.app",
     ];
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
-      callback(new Error("Not allowed by CORS"));
+      console.warn("Blocked by CORS:", origin);
+      callback(null, false); // safer than throwing error
     }
   },
-  credentials: true, // ✅ required to send cookies
+  credentials: true,
 }));
+
 
 
 app.use(cookieParser());
